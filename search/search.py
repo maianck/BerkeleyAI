@@ -87,7 +87,6 @@ def depthFirstSearch(problem):
 
     stack = util.Stack()
     stack.push(path)
-    visited = [problem.getStartState()]
 
     while not stack.isEmpty():
         currentPath = stack.pop()
@@ -100,9 +99,7 @@ def depthFirstSearch(problem):
                 nextLocation = nextStep[0]
                 nextDirection = nextStep[1]
                 nextCost = nextStep[2]
-                if nextLocation not in currentPath.locations and nextLocation not in visited:
-                    if not problem.isGoalState(nextLocation):
-                        visited.append(nextLocation)
+                if nextLocation not in currentPath.locations:
                     nextLocations = currentPath.locations[:]
                     nextLocations.append(nextLocation)
                     nextDirections = currentPath.directions[:]
